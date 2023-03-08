@@ -3,7 +3,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   entry: "./src/index.jsx",
-  devtool: "nosources-cheap-module-source-map",
+  devtool: "cheap-module-source-map",
   mode: "development",
   output: {
     path: path.resolve(__dirname, "dist"),
