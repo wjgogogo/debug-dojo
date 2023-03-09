@@ -7,14 +7,23 @@
     {
       "type": "chrome",
       "request": "launch",
-      "name": "Launch Chrome against localhost",
+      "name": "启动 webpack",
       "url": "http://localhost:8080",
       "webRoot": "${workspaceFolder}",
-        
       "sourceMapPathOverrides": {
         "webpack:///./~/*": "${workspaceFolder}/node_modules/*",
         "webpack://?:*/*": "${workspaceFolder}/*"
       }
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "启动当前文件单测",
+      "runtimeExecutable": "sh",
+      "program": "${workspaceFolder}/node_modules/.bin/jest",
+      "args": ["${file}"],
+      "pauseForSourceMap": true,
+      "sourceMaps": true
     }
   ]
 }

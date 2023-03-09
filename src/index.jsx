@@ -1,6 +1,7 @@
-import { useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import ReactDOM from "react-dom/client";
 import { PivotSheet } from "@antv/s2";
+import "./index.less";
 
 const App = () => {
   const container = useRef();
@@ -9,7 +10,7 @@ const App = () => {
   useEffect(() => {
     const options = {
       width: 600,
-      height: 480,
+      height: 340,
     };
     const dataCfg = {
       describe: "标准交叉表数据。",
@@ -518,9 +519,9 @@ const App = () => {
   }, []);
 
   return (
-    <div>
-      Source Map Test
-      <div ref={container} />
+    <div className="container">
+      <h1>Source Map Test</h1>
+      <div className="sheet" ref={container} />
     </div>
   );
 };

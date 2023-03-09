@@ -1,5 +1,6 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
   entry: "./src/index.jsx",
@@ -8,6 +9,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: "bundle.js",
+    clean: true,
   },
   devServer: {
     static: "./dist",
@@ -16,29 +18,46 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.js$/,
+        enforce: "pre",
+        loader: "source-map-loader",
+      },
+      {
         test: /\.jsx?$/,
         exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-          options: {
-            presets: [
-              "@babel/preset-env",
-              [
-                "@babel/preset-react",
-                {
-                  runtime: "automatic",
-                },
-              ],
-            ],
+        loader: "babel-loader",
+      },
+      {
+        test: /\.less$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          {
+            loader: "css-loader",
+            options: {
+              sourceMap: true,
+            },
           },
-        },
+          {
+            loader: "less-loader",
+            options: {
+              sourceMap: true,
+            },
+          },
+        ],
       },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
       inject: "body",
-      template: path.resolve(__dirname, "index.html"),
+      template: path.resolve(__dirname, "index-webpack.html"),
+    }),
+    new MiniCssExtractPlugin({
+      filename: "bundle.css",
     }),
   ],
+  // externals: {
+  //   react: "React",
+  //   "react-dom/client": "ReactDOM",
+  // },
 };
