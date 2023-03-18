@@ -1,29 +1,23 @@
 {
-  // Use IntelliSense to learn about possible attributes.
-  // Hover to view descriptions of existing attributes.
-  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
   "configurations": [
     {
       "type": "chrome",
       "request": "launch",
-      "name": "启动 webpack",
-      "url": "http://localhost:8080",
-      "webRoot": "${workspaceFolder}",
-      "sourceMapPathOverrides": {
-        "webpack:///./~/*": "${workspaceFolder}/node_modules/*",
-        "webpack://?:*/*": "${workspaceFolder}/*"
-      }
+      "name": "启动上手案例",
+      "file": "${workspaceFolder}/start-from-scratch.html"
+    },
+    {
+      "type": "chrome",
+      "request": "attach",
+      "name": "连接调试模式的网页",
+      "port": 9222
     },
     {
       "type": "node",
-      "request": "launch",
-      "name": "启动当前文件单测",
-      "runtimeExecutable": "sh",
-      "program": "${workspaceFolder}/node_modules/.bin/jest",
-      "args": ["${file}"],
-      "pauseForSourceMap": true,
-      "sourceMaps": true
+      "request": "attach",
+      "name": "连接调试模式的 Node.js 项目",
+      "port": 9229
     }
   ]
 }

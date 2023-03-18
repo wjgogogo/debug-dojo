@@ -56,8 +56,4 @@ module.exports = {
       filename: "bundle.css",
     }),
   ],
-  // externals: {
-  //   react: "React",
-  //   "react-dom/client": "ReactDOM",
-  // },
 };

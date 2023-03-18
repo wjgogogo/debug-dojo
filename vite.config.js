@@ -24,12 +24,7 @@ export default defineConfig({
         format: "iife",
         entryFileNames: "bundle.js",
         assetFileNames: "bundle.[ext]",
-        globals: {
-          react: "React",
-          "react-dom/client": "ReactDOM",
-        },
       },
-      external: ["react", "react-dom/client"],
     },
   },
 });
