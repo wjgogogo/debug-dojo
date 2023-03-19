@@ -18,6 +18,25 @@
       "request": "attach",
       "name": "连接调试模式的 Node.js 项目",
       "port": 9229
+    },
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "调试 nosources 代码",
+      "url": "http://localhost:8000",
+      "sourceMapPathOverrides": {
+        "webpack:///./~/*": "${workspaceFolder}/node_modules/*",
+        "webpack://?:*/*": "${workspaceFolder}/*"
+      }
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "启动当前单测",
+      "runtimeExecutable": "sh",
+      "program": "${workspaceFolder}/node_modules/.bin/jest",
+      "args": ["${file}"],
+      "sourceMaps": true
     }
   ]
 }
